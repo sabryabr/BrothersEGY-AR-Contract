@@ -1124,8 +1124,8 @@
 
         function generatePreview() {
             const c = calc();
-            const branchMap = { "HRG": "HRG", "ALX": "ALX", "CAI": "CAI", "RSD": "RSD" };
-            const bCode = branchMap[safeVal('issuingBranch')] || "HRG";
+            const branchCodes = { "HRG": "HRG", "ALX": "ALX", "CAI": "CAI", "RSD": "RSD" };
+            const bCode = branchCodes[safeVal('issuingBranch')] || "HRG";
 
             let now = new Date();
             let dStr = String(now.getDate()).padStart(2, '0') + String(now.getMonth() + 1).padStart(2, '0');
@@ -1188,13 +1188,13 @@
             const poaDate = safeVal('poa_date');
             const poaText = poaNum ? `بموجب التوكيل رقم (${poaNum}) ${poaChar ? 'حرف ' + poaChar : ''} ${poaDate ? 'بتاريخ ' + poaDate : ''}` : '';
 
-            const branchMap = {
+            const branchNamesAr = {
                 "HRG": "الغردقة",
                 "ALX": "الإسكندرية",
                 "CAI": "القاهرة",
                 "RSD": "رشيد"
             };
-            const currentBranchName = branchMap[safeVal('issuingBranch')] || "الغردقة";
+            const currentBranchName = branchNamesAr[safeVal('issuingBranch')] || "الغردقة";
 
             const termsTextStr = { ...termsText };
             termsTextStr[13] = `تختص محكمة ${currentBranchName} بالنظر في أي نزاع ينشأ حول بنود هذا العقد لا قدر الله.`;
@@ -1408,9 +1408,6 @@
                             <tr style="font-weight:bold; background:#eee;"><td colspan="2" align="left">إجمالي الخصومات:</td><td align="left">___________ ج.م</td></tr>
                         </table>
                     </div>
-                    <div style="font-size:7.5pt; font-weight:bold; margin-top:5px; border:1px solid #000; padding:3px; background:#fff3e0;">
-                        هام: إذا لم يتم إغلاق/توقيع تقرير العودة، يحتفظ المستأجر بالمسؤولية الكاملة.
-                    </div>
                 </div>`;
 
             html += `
@@ -1426,9 +1423,9 @@
                     </div>
 
                     <div style="margin: 5px 0; padding: 10px; border: 2px solid #000; background: #fff; line-height: 1.6; font-size: 9.5pt;">
-                        اقر انا : <b>${safeVal('cl_fname')} ${safeVal('cl_sname')}</b> &nbsp;&nbsp;&nbsp; بطلقة رقم : <b>${safeVal('cl_pass')}</b> <br>
+                        اقر انا : <b>${safeVal('cl_fname')} ${safeVal('cl_sname')}</b> &nbsp;&nbsp;&nbsp; بطاقة رقم : <b>${safeVal('cl_pass')}</b> <br>
                         رخصة قياده رقم: <b>${safeVal('cl_lic')}</b> &nbsp;&nbsp;&nbsp; بااني استلمت السياره نوع: <b>${safeVal('manModel')}</b> &nbsp;&nbsp;&nbsp; لوحات رقم: <b>${safeVal('h_plate')}</b> &nbsp;&nbsp;&nbsp; لون: <b>${safeVal('h_color') || '..........'}</b> <br>
-                        بأنني استأجرت السيارة وأنها على مسؤوليتي الشخصية ، وأنا مسؤول مسؤولية كاملة عن السيارة ابتداءً من تاريخ وساعة استلامها فيما يتعلق بالجوانب المدنية والجنائية ومسؤول عن جميع المخالفات. والحوادث وجميع الأضرار التي حدتث خلال فترة الإيجار وأقر بأنني قرأت الشروط والأحكام العامة الواردة في الجزء الخلفي من اتفاقية الإيجار هذه الواردة في نسختي ، وتم إخطاري بالعواقب المحتملة من قبل وكيل التأجير ، وهذا هو اعتراف بهذا من جهتي & وبموافقتي علية أوقع هنا .
+                        بأنني استأجرت السيارة وأنها على مسؤوليتي الشخصية ، وأنا مسؤول مسؤولية كاملة عن السيارة ابتداءً من تاريخ وساعة استلامها فيما يتعلق بالجوانب المدنية والجنائية ومسؤول عن جميع المخالفات. والحوادث وجميع الأضرار التي حدثت خلال فترة الإيجار وأقر بأنني قرأت الشروط والأحكام العامة الواردة في الجزء الخلفي من اتفاقية الإيجار هذه الواردة في نسختي ، وتم إخطاري بالعواقب المحتملة من قبل وكيل التأجير ، وهذا هو اعتراف بهذا من جهتي & وبموافقتي علية أوقع هنا .
                         <br><br>
                         <div style="display:flex; justify-content:space-between; align-items:flex-end; font-size:10pt;">
                             <div style="width:50%; text-align:right;">
@@ -1485,7 +1482,7 @@
                     <div class="rec-body-grid">
                         <div class="rec-col">
                             <div class="rec-row"><span class="rec-label">استلمنا من</span><span class="rec-val">${recData.client}</span></div>
-                            <div class="rec-row"><span class="rec-label">جواز السفر / الهوية</span><span class="rec-val">${recData.pass || '-'}</span></div>
+                            <div class="rec-row"><span class="rec-label">جواز السفر / رقم بطاقة الرقم القومى</span><span class="rec-val">${recData.pass || '-'}</span></div>
                             <div class="rec-row"><span class="rec-label">الهاتف</span><span class="rec-val">${recData.phone}</span></div>
                         </div>
                         <div class="rec-col">
