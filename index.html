@@ -1390,18 +1390,16 @@
                         <div style="font-size:7pt;"><strong>الإطار:</strong> _________________</div>
                     </div>
                     ${checklistGroups}
-                    <div class="box-section" style="margin-top:5px; margin-bottom:2px; padding:2px;">
+                    <div class="box-section" style="margin-top:2px; margin-bottom:2px; padding:2px;">
                         <span class="bs-title" style="font-size:7pt;">التسوية النهائية</span>
-                        <table class="pt" style="font-size:8pt; margin-bottom:0;">
-                            <tr><th width="45%">وصف البند</th><th width="30%">السعر × الكمية</th><th width="25%">الإجمالي (ج.م)</th></tr> 
-                            <tr style="background:#fff3e0;"><td colspan="2" align="left">وقت وتاريخ العودة الفعلي:</td><td align="left">__________________</td></tr>
-                            <tr><td>كيلومتر زائد</td><td align="center">_______ x _______</td><td align="left">___________</td></tr>
-                            <tr><td>تأخير عودة</td><td align="center">_______ x _______</td><td align="left">___________</td></tr>
-                            <tr><td>رسوم تنظيف</td><td align="center">-</td><td align="left">___________</td></tr>
-                            <tr><td>نقص وقود</td><td align="center">-</td><td align="left">___________</td></tr>
-                            <tr><td>مخالفات مرورية</td><td align="center">-</td><td align="left">___________</td></tr>
-                            <tr><td>أضرار جديدة</td><td align="center">-</td><td align="left">___________</td></tr>
-                            <tr style="font-weight:bold; background:#eee;"><td colspan="2" align="left">إجمالي المطلوب:</td><td align="left">___________ ج.م</td></tr>
+                        <table class="pt" style="font-size:7pt; margin-bottom:0; width:100%;">
+                            <tr><th width="40%">وصف البند</th><th width="35%">السعر × الكمية</th><th width="25%">المبلغ</th></tr> 
+                            <tr style="background:#fff3e0;"><td colspan="2" align="left">وقت العودة:</td><td align="left">_______</td></tr>
+                            <tr><td>كم زائد</td><td align="center">___ x ___</td><td align="left">____</td></tr>
+                            <tr><td>تأخير</td><td align="center">___ x ___</td><td align="left">____</td></tr>
+                            <tr><td>تنظيف/وقود</td><td align="center">-</td><td align="left">____</td></tr>
+                            <tr><td>أضرار/مخالفات</td><td align="center">-</td><td align="left">____</td></tr>
+                            <tr style="font-weight:bold; background:#eee;"><td colspan="2" align="left">إجمالي:</td><td align="left">____ ج.م</td></tr>
                         </table>
                     </div>
                 </div>`;
@@ -1409,21 +1407,18 @@
             html += `
             <div class="a4-page">
                 <div class="watermark"><img src="${logoSrc}"></div>
-                <div class="page-content">
-                    <div class="doc-head"><strong>المقر بما فيه</strong><span>صفحة 3/4</span></div>
+                <div class="page-content" style="padding-top: 5px;">
+                    <div class="doc-head" style="margin-bottom: 5px;"><strong>المقر بما فيه</strong><span>صفحة 3/4</span></div>
                     
-                    <div style="margin: 5px 0; padding: 10px; border: 2px solid #000; background: #fff; line-height: 1.6; font-size: 9.5pt;">
+                    <div style="margin: 0 0 5px 0; padding: 5px; border: 1.5px solid #000; background: #fff; line-height: 1.4; font-size: 8.5pt;">
                         اقر انا : <b>${safeVal('cl_fname')} ${safeVal('cl_sname')}</b> &nbsp;&nbsp;&nbsp; بطاقة رقم : <b>${safeVal('cl_pass')}</b> <br>
                         رخصة قياده رقم: <b>${safeVal('cl_lic')}</b> &nbsp;&nbsp;&nbsp; بااني استلمت السياره نوع: <b>${safeVal('manModel')}</b> &nbsp;&nbsp;&nbsp; لوحات رقم: <b>${safeVal('h_plate')}</b> &nbsp;&nbsp;&nbsp; لون: <b>${safeVal('h_color') || '..........'}</b> <br>
                         بأنني استأجرت السيارة وأنها على مسؤوليتي الشخصية ، وأنا مسؤول مسؤولية كاملة عن السيارة ابتداءً من تاريخ وساعة استلامها فيما يتعلق بالجوانب المدنية والجنائية ومسؤول عن جميع المخالفات. والحوادث وجميع الأضرار التي حدثت خلال فترة الإيجار وأقر بأنني قرأت الشروط والأحكام العامة الواردة في الجزء الخلفي من اتفاقية الإيجار هذه الواردة في نسختي ، وتم إخطاري بالعواقب المحتملة من قبل وكيل التأجير ، وهذا هو اعتراف بهذا من جهتي.
-                        <br><br>
-                        <div style="display:flex; justify-content:space-between; align-items:flex-end; font-size:10pt;">
-                            <div style="width:55%; background:#f9f9f9; padding:10px; border:1px solid #ddd; border-radius:5px; text-align:right;">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-end; font-size:8.5pt; margin-top: 5px;">
+                            <div style="width:50%; background:#f9f9f9; padding:5px; border:1px solid #ddd; border-radius:3px; text-align:right;">
                                 <strong>المقر بما فيه (المستأجر)</strong><br>
                                 الاسم: ${safeVal('cl_fname')} ${safeVal('cl_sname')} <br>
-                                رقم بطاقة الرقم القومى: ${safeVal('cl_pass')} <br>
-                                التوقيع: ____________________ <br>
-                                التاريخ: ${today}
+                                التوقيع: ____________________ &nbsp; التاريخ: ${today}
                             </div>
                             <div style="width:40%; text-align:center;">
                                 <strong>وقت وتاريخ الاستلام</strong><br>
@@ -1432,7 +1427,7 @@
                         </div>
                     </div>
 
-                    <div class="insp-two-col">
+                    <div class="insp-two-col" style="gap: 5px;">
                         ${pickupHtmlClean}
                         ${returnHtml}
                     </div>
