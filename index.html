@@ -1102,6 +1102,8 @@
             let depPending = reqDep - totalDepPaid;
 
             // Update UI
+            // Update UI
+            document.getElementById('c_days').innerText = days.toLocaleString('ar-EG');
             document.getElementById('c_rent').innerText = Math.round(totalRentOnly).toLocaleString('ar-EG');
             document.getElementById('c_fees').innerText = Math.round(fee_d + fee_c).toLocaleString('ar-EG');
             document.getElementById('c_total_preview').innerText = totalDue.toLocaleString('ar-EG') + " ج.م";
