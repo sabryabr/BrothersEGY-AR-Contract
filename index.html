@@ -1241,7 +1241,7 @@
                             <strong>ثانياً (المستأجر):</strong> السيد/ <b>${safeVal('cl_fname')} ${safeVal('cl_sname')}</b> <br>
                             جواز سفر / رقم بطاقة الرقم القومى: ${safeVal('cl_pass')} | الصادرة من: ${safeVal('cl_nation')} | هاتف: ${safeVal('cl_ph_code')} ${safeVal('cl_phone')} <br>
                             الكائن بالعنوان: ${safeVal('cl_addr')} | بريد إلكتروني: ${safeVal('cl_email')} <br>
-                            رخصة قيادة رقم: ${safeVal('cl_lic')}
+                            رخصة قيادة رقم: ${safeVal('cl_lic')} ${safeVal('cl_add_driver') ? `<br><b>السائق الإضافي:</b> ${safeVal('cl_add_driver')}${safeVal('cl_add_lic') ? ' | <b>رخصة:</b> ' + safeVal('cl_add_lic') : ''}` : ''}
                         </div>
                     </div>
 
@@ -1269,6 +1269,8 @@
                             <tr><td>القيمة الإيجارية للمدة</td><td>${rateTxt}</td><td align="left">${Math.round(base).toLocaleString('ar-EG')}</td></tr>
                             ${c.kmPackageCost > 0 ? `<tr><td>باقة الكيلومترات</td><td>رسوم الباقة</td><td align="left">${c.kmPackageCost.toLocaleString('ar-EG')}</td></tr>` : ''}
                             ${c.i > 0 ? `<tr><td>رسوم التأمين المختارة</td><td>${c.i} x ${c.days} يوم</td><td align="left">${(c.i * c.days).toLocaleString('ar-EG')}</td></tr>` : ''}
+                            ${document.getElementById('add_dr').checked ? `<tr><td>سائق إضافي</td><td>${safeNum('rate_dr')} x ${c.days} يوم</td><td align="left">${(safeNum('rate_dr') * c.days).toLocaleString('ar-EG')}</td></tr>` : ''}
+                            ${document.getElementById('add_st').checked ? `<tr><td>كرسي أطفال</td><td>${safeNum('rate_st')} x ${c.days} يوم</td><td align="left">${(safeNum('rate_st') * c.days).toLocaleString('ar-EG')}</td></tr>` : ''}
                             ${c.fee_d + c.fee_c > 0 ? `<tr><td>رسوم التوصيل/الاستلام</td><td>خدمات لوجستية</td><td align="left">${(c.fee_d + c.fee_c).toLocaleString('ar-EG')}</td></tr>` : ''}
                             <tr style="font-weight:bold; border-top:2px solid #000; background:#eee;"><td colspan="2" align="left">إجمالي قيمة العقد:</td><td align="left">${Math.round(c.totalDue).toLocaleString('ar-EG')} ج.م</td></tr>
                         </table>
